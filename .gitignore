@@ -1,0 +1,13 @@
+###############
+#    Files    #
+###############
+*.pyc
+*.egg-info
+
+###############
+# Directories #
+###############
+.cache/
+.eggs/
+.dist/
+__pycache__/

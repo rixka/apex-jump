@@ -1,0 +1,12 @@
+---
+service: apex-jump
+
+provider:
+  name: aws
+  runtime: python2.7
+
+functions:
+  hello:
+    handler: handler.lambda_handler
+    environment:
+      LOG_LEVEL: DEBUG

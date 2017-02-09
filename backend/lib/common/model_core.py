@@ -1,5 +1,7 @@
 from pynamodb.models import Model
 
+from lib.common import RestfulError
+
 
 class ModelCore(Model):
     @classmethod
@@ -13,7 +15,7 @@ class ModelCore(Model):
         try:
             return cls.get(kwargs.get('id'))
         except exceptions.DoesNotExist:
-            raise HandledErrorResponse('Not Found')
+            raise RestfulError('Not Found')
 
     @classmethod
     def item_exists(cls, id):
@@ -28,4 +30,4 @@ class ModelCore(Model):
         try:
             cls.get(id).delete()
         except exceptions.DoesNotExist:
-            raise HandledErrorResponse('Not Found')
+            raise RestfulError('Not Found')

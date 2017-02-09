@@ -1,4 +1,5 @@
 from uuid import uuid4
+from datetime import datetime
 from jsonschema import validate, exceptions
 
 
@@ -8,6 +9,10 @@ class RestfulError(ValueError):
 
 def get_uuid():
     return str(uuid4())
+
+
+def get_now_time():
+    return datetime.utcnow().isoformat()
 
 
 def load_schema(schema):

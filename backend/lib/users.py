@@ -1,9 +1,7 @@
-from datetime import datetime
-from pynamodb import exceptions
-from pynamodb.attributes import UnicodeAttribute, UTCDateTimeAttribute
+from pynamodb.attributes import UnicodeAttribute
 
-from common import get_uuid
 from common import ModelCore
+from common import get_uuid, get_now_time
 
 
 class User(ModelCore):
@@ -16,5 +14,5 @@ class User(ModelCore):
     email = UnicodeAttribute()
 
     jwt = UnicodeAttribute(null=True)
-    created_at = UTCDateTimeAttribute(default=datetime.now)
-    updated_at = UTCDateTimeAttribute(default=datetime.now)
+    created_at = UnicodeAttribute(default=get_now_time)
+    updated_at = UnicodeAttribute(default=get_now_time)

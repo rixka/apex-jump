@@ -1,4 +1,5 @@
 from pynamodb.models import Model
+from pynamodb import exceptions
 
 from lib.common import RestfulError
 
@@ -8,12 +9,13 @@ class ModelCore(Model):
     def new(cls, kwargs):
         item = cls(**kwargs)
         item.save()
-        return item
+        return vars(item)['attribute_values']
 
     @classmethod
     def find(cls, kwargs):
         try:
-            return cls.get(kwargs.get('id'))
+            item = cls.get(kwargs.get('id'))
+            return vars(item)['attribute_values']
         except exceptions.DoesNotExist:
             raise RestfulError('Not Found')
 
